@@ -14,7 +14,33 @@
 </head>
 
 <body>
-<div id="header"></div>
+<!--Knapp för att öppna varukorgen-->
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#cart"> Varukorg </button>
+
+<!--Varukorg-->
+<div class="offcanvas offcanvas-end" id="cart" >
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Varukorg</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            Put elements here, use dropdown to change amount of a product
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                Dropdown button
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--Kort-->
 <div class="container">
     <div class="row mx-1 my-1 gy-3 mb-4" id="items"></div> <!--avstånd från topp och sida, mellan kort, innan footer-->
 </div>

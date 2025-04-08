@@ -30,7 +30,7 @@ function getItems() {
             <button class="btn btn-light mb-2 w-100" data-bs-toggle="collapse" data-bs-target="#description-${item.id}">
                 Mer info </button>
             <!--Beställnings-knapp-->
-            <a href="orderform.html?id=${item.id}" class="btn btn-light w-100 " id="btn2">Beställ</a>
+            <a href="orderform.html?id=${item.id}" class="btn btn-light w-100 " id="btn2">Lägg till i varukorg</a>
         </div>
         </div>
         </div>

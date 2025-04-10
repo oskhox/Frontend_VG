@@ -9,6 +9,7 @@ function getItems() {
         localStorage.setItem('items', JSON.stringify(items));
     }
 
+    <!--Kort på items-sidan-->
     function renderItems(items) {
         let output = "";
 
@@ -42,7 +43,7 @@ function getItems() {
 
 getItems();
 
-
+<!--Kort på första sidan-->
 function getFourItemsByCategory(category, containerId) {
     fetch(`https://fakestoreapi.com/products/category/${category}`)
         .then(response => response.json())

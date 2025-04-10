@@ -1,3 +1,4 @@
+<!--Kort på produktsidan-->
 function getItems() {
     fetch('https://fakestoreapi.com/products')
         .then(response => response.json())
@@ -5,7 +6,6 @@ function getItems() {
             renderItems(data);
         });
 
-    <!--Kort på produktsidan-->
     function renderItems(items) {
         let output = "";
 

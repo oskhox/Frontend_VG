@@ -1,8 +1,8 @@
-//TODO:Funkar ej
-//Uppdatera varukorgen när headern initialt laddas
-document.addEventListener("DOMContentLoaded", function () {
-    updateCart();
-    console.log("cart initially updated")
+//Uppdatera varukorgen utefter localStorage varje gång varukorgen öppnas
+document.addEventListener("shown.bs.offcanvas", function (event) {
+    if (event.target.id === "cart") {
+        updateCart();
+    }
 });
 
 //Hjälpmetod som uppdaterar den synliga varukorgen utefter vad som finns i localStorage
@@ -13,9 +13,10 @@ function updateCart() {
     //Rensa dubletter i offcanvas, localStorage är oförändrad
     cartContainer.innerHTML = "";
 
-    //TODO:Funkar ej
     if (cartItems.length === 0) {
-        cartContainer.innerHTML = '<p>Din varukorg är tom</p>';
+        const emptyMessage = document.createElement("p");
+        emptyMessage.textContent = "Varukorgen är tom";
+        cartContainer.appendChild(emptyMessage);
         return;
     }
 

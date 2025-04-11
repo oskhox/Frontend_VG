@@ -1,4 +1,4 @@
-<!--Kort på produktsidan-->
+//Kort på produktsidan
 function getItems() {
     fetch('https://fakestoreapi.com/products')
         .then(response => response.json())
@@ -28,8 +28,8 @@ function getItems() {
                         <button class="btn btn-light mb-2 w-100" data-bs-toggle="collapse" data-bs-target="#description-${item.id}">
                             Mer info 
                         </button>
-                        <!--Beställnings-knapp-->
-                        <a href="orderform.html?id=${item.id}" class="btn btn-light w-100 " id="btn2">Lägg till i varukorg</a>
+                        <!--Beställnings-knapp som anropar addToCart i cart.js med produktens item.id-->
+                        <a class="btn btn-light w-100" id="btn2" onclick="addToCart(${item.id} ); return false;">Lägg till i varukorg</a>
                     </div>
                 </div>
             </div>`;
@@ -41,7 +41,7 @@ function getItems() {
 
 getItems();
 
-<!--Kort på första sidan-->
+//Kort på första sidan
 function getFourItemsByCategory(category, containerId) {
     fetch(`https://fakestoreapi.com/products/category/${category}`)
         .then(response => response.json())

@@ -2,15 +2,16 @@
 //Uppdatera varukorgen när headern initialt laddas
 document.addEventListener("DOMContentLoaded", function () {
     updateCart();
+    console.log("cart initially updated")
 });
 
-//Hjälpmetod som uppdaterar varukorgen utefter vad som finns i localStorage
+//Hjälpmetod som uppdaterar den synliga varukorgen utefter vad som finns i localStorage
 function updateCart() {
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     let cartContainer = document.getElementById("cart-container");
 
     //Rensa dubletter i offcanvas, localStorage är oförändrad
-    cartContainer.innerHTML = '';
+    cartContainer.innerHTML = "";
 
     //TODO:Funkar ej
     if (cartItems.length === 0) {
@@ -45,7 +46,7 @@ function addToCart(itemId) {
     let currentCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     fetch(`https://fakestoreapi.com/products/${itemId}`)
-        .then(res => res.json())
+        .then(response => response.json())
         .then(product => {
             const existingItem = currentCart.find(item => item.id === product.id);
             if (existingItem) {
@@ -54,7 +55,7 @@ function addToCart(itemId) {
                 currentCart.push({
                     id: product.id,
                     title: product.title,
-                    price: Math.ceil(product.price * 10), // Apply same conversion as in cards
+                    price: Math.ceil(product.price * 10),
                     image: product.image,
                     quantity: 1
                 });

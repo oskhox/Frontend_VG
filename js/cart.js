@@ -38,7 +38,7 @@ function updateCart() {
 }
 
 /*
-Läser in nuvarande localStorage, läser in från API igen och ökar kvantitet eller lägger in ny produkt,sparar i
+Läser in nuvarande localStorage, läser in från API igen och ökar kvantitet eller lägger in ny produkt, sparar i
 localStorage och uppdaterar DOM
  */
 function addToCart(itemId) {

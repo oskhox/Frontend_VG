@@ -1,4 +1,4 @@
-//Uppdatera varukorgen utefter localStorage varje gång varukorgen öppnas
+//Anropa hjälpmetod varje gång varukorgen öppnas
 document.addEventListener("shown.bs.offcanvas", function (event) {
     if (event.target.id === "cart") {
         updateCart();

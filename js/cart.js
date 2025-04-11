@@ -95,9 +95,7 @@ function changeQuantity(itemId, quantity) {
     } else {
         //Ändra kvantitet
         const item = cartItems.find(item => item.id === itemId);
-        if (item) {
-            item.quantity = quantity;
-        }
+        item.quantity = quantity;
     }
 
     localStorage.setItem("cart", JSON.stringify(cartItems));

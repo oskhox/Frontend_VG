@@ -29,7 +29,7 @@ function getItems() {
                             Mer info 
                         </button>
                         <!--Beställnings-knapp som anropar addToCart i cart.js med produktens item.id TAGIT BORT id="btn2"-->
-                        <a class="btn w-100 effect effect-5" onclick="addToCart(${item.id} ); return false;">Lägg till i varukorg</a>
+                        <a class="btn w-100 effect effect-5" onclick="addToCart(${item.id}); return false;">Lägg till i varukorg</a>
                     </div>
                 </div>
             </div>`;

@@ -30,7 +30,22 @@ function updateCart() {
             <div class="flex-grow-1">
                 <h6 class="mb-0">${item.title}</h6>
                 <div class="d-flex align-items-center">
-                    <div>${item.quantity} st</div>
+                    
+                    <!--Dropdown för att ändra kvantitet-->                
+                    <div class="dropdown mt-3">
+                    <button class="btn btn-sm btn-light btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                    ${item.quantity} st </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" onclick="changeQuantity(${item.id}, 1);">1</a></li>
+                    <li><a class="dropdown-item" onclick="changeQuantity(${item.id}, 2);">2</a></li>
+                    <li><a class="dropdown-item" onclick="changeQuantity(${item.id}, 3);">3</a></li>
+                    <li><a class="dropdown-item" onclick="changeQuantity(${item.id}, 4);">4</a></li>
+                    <li><a class="dropdown-item" onclick="changeQuantity(${item.id}, 5);">5</a></li>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" onclick="changeQuantity(${item.id}, -1)">Ta bort produkt</a>
+                    </ul>
+                    </div>
+                    
                     <div class="ms-auto">${itemTotal} kr</div>
                 </div>
             </div>
@@ -40,8 +55,8 @@ function updateCart() {
 }
 
 /*
-Läser in nuvarande localStorage, läser in från API igen och ökar kvantitet eller lägger in ny produkt, sparar i
-localStorage och anropar uppdatering av DOM
+Läser in nuvarande localStorage till en array, läser in från API igen och ökar kvantitet eller lägger in ny produkt,
+sparar i localStorage och anropar uppdatering av DOM
  */
 function addToCart(itemId) {
     let currentCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -65,4 +80,26 @@ function addToCart(itemId) {
             localStorage.setItem("cart", JSON.stringify(currentCart));
             updateCart();
         })
+}
+
+/*
+Anropas när användaren vill ändra antal av en produkt eller ta bort den, gör först om localStorage till en array,
+filtrerar helt eller ändrar kvantitet, sparar i localStorage och anropar uppdatering av DOM
+*/
+function changeQuantity(itemId, quantity) {
+    let cartItems = JSON.parse(localStorage.getItem("cart"));
+
+    //Filtrera ut för att ta bort
+    if (quantity === -1) {
+        cartItems = cartItems.filter(item => item.id !== itemId);
+    } else {
+        //Ändra kvantitet
+        const item = cartItems.find(item => item.id === itemId);
+        if (item) {
+            item.quantity = quantity;
+        }
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    updateCart();
 }

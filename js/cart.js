@@ -39,7 +39,7 @@ function updateCart() {
 
 /*
 Läser in nuvarande localStorage, läser in från API igen och ökar kvantitet eller lägger in ny produkt, sparar i
-localStorage och uppdaterar DOM
+localStorage och anropar uppdatering av DOM
  */
 function addToCart(itemId) {
     let currentCart = JSON.parse(localStorage.getItem("cart")) || [];

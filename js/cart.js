@@ -5,7 +5,7 @@ document.addEventListener("shown.bs.offcanvas", function (event) {
     }
 });
 
-//Hjälpmetod som uppdaterar den synliga varukorgen utefter vad som finns i localStorage
+//Hjälpmetod som ritar upp varukorg utifrån localStorage
 function updateCart() {
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     let cartContainer = document.getElementById("cart-container");

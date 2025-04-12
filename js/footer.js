@@ -4,5 +4,5 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             document.getElementById("footer-placeholder").innerHTML = data;
         })
-        .catch(error => console.error("Fel vid inläsning av footern:", error));
+        .catch(error => console.error("Fel vid inläsning av footer:", error));
 });

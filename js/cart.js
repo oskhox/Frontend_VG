@@ -1,10 +1,10 @@
-//Anropa hjälpmetoder varje gång varukorgen öppnas
+//Varje gång varukorgen öppnas
 document.addEventListener("shown.bs.offcanvas", function (event) {
-        updateCart();
-        totalSum();
+    updateCart();
+    totalSum();
 });
 
-//Hjälpmetod som ritar upp varukorg utifrån localStorage
+//Ritar upp varukorg utifrån localStorage
 function updateCart() {
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     let cartContainer = document.getElementById("cart-container");
@@ -19,7 +19,7 @@ function updateCart() {
         return;
     }
 
-    //Skapa upp det som finns i localStorage och lägg till i DOM
+    //Skapar upp det som finns i localStorage
     cartItems.forEach(item => {
         const itemTotal = item.price * item.quantity;
         const cartItem = document.createElement('div');
@@ -54,8 +54,8 @@ function updateCart() {
 }
 
 /*
-Läser in nuvarande localStorage till en array, läser in från API igen och ökar kvantitet eller lägger in ny produkt,
-sparar i localStorage och anropar uppdatering av DOM
+Läser in nuvarande localStorage till en array, läser in från API, ökar kvantitet eller lägger in ny produkt,
+sparar i localStorage och uppdaterar varukorgen
  */
 function addToCart(itemId) {
     let currentCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -81,10 +81,7 @@ function addToCart(itemId) {
         })
 }
 
-/*
-Anropas när användaren vill ändra antal av en produkt eller ta bort den, gör först om localStorage till en array,
-filtrerar helt eller ändrar kvantitet, sparar i localStorage och uppdaterar
-*/
+//Filtrerar bort helt eller ändrar kvantitet, sparar i localStorage och uppdaterar varukorgen
 function changeQuantity(itemId, quantity) {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
 
@@ -101,8 +98,7 @@ function changeQuantity(itemId, quantity) {
 }
 
 function emptyCart() {
-    let cartItems = JSON.parse(localStorage.getItem("cart"));
-    cartItems = [];
+    let cartItems = [];
     localStorage.setItem("cart", JSON.stringify(cartItems));
     totalSum();
     updateCart();

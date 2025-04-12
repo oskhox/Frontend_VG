@@ -15,7 +15,7 @@ function updateCart() {
 
     if (cartItems.length === 0) {
         const emptyMessage = document.createElement("p");
-        emptyMessage.textContent = "Varukorgen är tom";
+        emptyMessage.textContent = "Varukorgen är tom.";
         cartContainer.appendChild(emptyMessage);
         return;
     }
@@ -102,9 +102,7 @@ function changeQuantity(itemId, quantity) {
     updateCart();
 }
 
-/*
-Läser in varukorgen som en array, tömmer arrayen, sparar den i localStorage och uppdaterar
- */
+//Läser in varukorgen som en array, tömmer arrayen, sparar den i localStorage och uppdaterar
 function emptyCart() {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
     cartItems = [];

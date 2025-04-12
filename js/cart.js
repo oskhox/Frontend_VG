@@ -109,7 +109,7 @@ function emptyCart() {
     updateCart();
 }
 
-function totalSum(){
+function totalSum() {
     let sum = 0;
     let cartItems = JSON.parse(localStorage.getItem("cart"));
     cartItems.forEach(item => sum += item.price * item.quantity);

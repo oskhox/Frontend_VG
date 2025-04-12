@@ -1,7 +1,8 @@
-//Anropa hjälpmetod varje gång varukorgen öppnas
+//Anropa hjälpmetoder varje gång varukorgen öppnas
 document.addEventListener("shown.bs.offcanvas", function (event) {
     if (event.target.id === "cart") {
         updateCart();
+        totalSum();
     }
 });
 
@@ -89,23 +90,28 @@ filtrerar helt eller ändrar kvantitet, sparar i localStorage och uppdaterar
 function changeQuantity(itemId, quantity) {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
 
-    //Filtrera ut för att ta bort
     if (quantity === -1) {
         cartItems = cartItems.filter(item => item.id !== itemId);
     } else {
-        //Ändra kvantitet
         const item = cartItems.find(item => item.id === itemId);
         item.quantity = quantity;
     }
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
+    totalSum();
     updateCart();
 }
 
-//Läser in varukorgen som en array, tömmer arrayen, sparar den i localStorage och uppdaterar
 function emptyCart() {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
     cartItems = [];
     localStorage.setItem("cart", JSON.stringify(cartItems));
     updateCart();
+}
+
+function totalSum(){
+    let sum = 0;
+    let cartItems = JSON.parse(localStorage.getItem("cart"));
+    cartItems.forEach(item => sum += item.price * item.quantity);
+    document.getElementById("total-sum").textContent = `Total summa: ${sum} kr`;
 }

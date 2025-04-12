@@ -1,7 +1,7 @@
 //Varje gång varukorgen öppnas
 document.addEventListener("shown.bs.offcanvas", function (event) {
-    updateCart();
     totalSum();
+    updateCart();
 });
 
 //Ritar upp varukorg utifrån localStorage
@@ -14,7 +14,7 @@ function updateCart() {
 
     if (cartItems.length === 0) {
         const emptyMessage = document.createElement("p");
-        emptyMessage.textContent = "Varukorgen är tom.";
+        emptyMessage.textContent = "Varukorgen är tom";
         cartContainer.appendChild(emptyMessage);
         return;
     }

@@ -1,9 +1,7 @@
 //Anropa hjälpmetoder varje gång varukorgen öppnas
 document.addEventListener("shown.bs.offcanvas", function (event) {
-    if (event.target.id === "cart") {
         updateCart();
         totalSum();
-    }
 });
 
 //Hjälpmetod som ritar upp varukorg utifrån localStorage
@@ -106,6 +104,7 @@ function emptyCart() {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
     cartItems = [];
     localStorage.setItem("cart", JSON.stringify(cartItems));
+    totalSum();
     updateCart();
 }
 

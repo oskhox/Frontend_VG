@@ -1,7 +1,7 @@
 //Varje gång varukorgen öppnas
 document.addEventListener("shown.bs.offcanvas", function (event) {
-    totalSum();
     updateCart();
+    totalSum();
 });
 
 //Ritar upp varukorg utifrån localStorage

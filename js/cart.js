@@ -84,7 +84,7 @@ function addToCart(itemId) {
 
 /*
 Anropas när användaren vill ändra antal av en produkt eller ta bort den, gör först om localStorage till en array,
-filtrerar helt eller ändrar kvantitet, sparar i localStorage och anropar uppdatering av DOM
+filtrerar helt eller ändrar kvantitet, sparar i localStorage och uppdaterar
 */
 function changeQuantity(itemId, quantity) {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
@@ -98,6 +98,16 @@ function changeQuantity(itemId, quantity) {
         item.quantity = quantity;
     }
 
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    updateCart();
+}
+
+/*
+Läser in varukorgen som en array, tömmer arrayen, sparar den i localStorage och uppdaterar
+ */
+function emptyCart() {
+    let cartItems = JSON.parse(localStorage.getItem("cart"));
+    cartItems = [];
     localStorage.setItem("cart", JSON.stringify(cartItems));
     updateCart();
 }

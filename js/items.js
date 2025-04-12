@@ -26,9 +26,8 @@ function getItems() {
                         <h6 class="price">${Math.ceil(item.price * 10)} kr</h6> 
                         <!--Beskrivnings-knapp-->
                         <button class="btn btn-light mb-2 w-100" data-bs-toggle="collapse" data-bs-target="#description-${item.id}">
-                            Mer info 
-                        </button>
-                        <!--Beställnings-knapp som anropar addToCart i cart.js med produktens item.id TAGIT BORT id="btn2"-->
+                            Mer info </button>
+                        <!--Beställnings-knapp som anropar addToCart i cart.js med produktens item.id-->
                         <a class="btn w-100 effect effect-5" onclick="addToCart(${item.id}); return false;">Lägg till i varukorg</a>
                     </div>
                 </div>

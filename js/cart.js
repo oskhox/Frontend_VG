@@ -19,7 +19,7 @@ function updateCart() {
         return;
     }
 
-    //Skapar upp det som finns i localStorage
+    //Skapar upp det som finns i localStorage-arrayen
     cartItems.forEach(item => {
         const itemTotal = item.price * item.quantity;
         const cartItem = document.createElement('div');
